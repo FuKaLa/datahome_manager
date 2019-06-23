@@ -57,25 +57,6 @@
 			<version>3.0</version>
 		</dependency>
 
-
-
-		<!--&lt;!&ndash;分页插件 &ndash;&gt;-->
-		<!--<dependency>-->
-			<!--<groupId>com.github.pagehelper</groupId>-->
-			<!--<artifactId>pagehelper-spring-boot-starter</artifactId>-->
-			<!--<version>1.0.0</version>-->
-		<!--</dependency>-->
-
-	<!--</dependencies>-->
-
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
 		<!--druid -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

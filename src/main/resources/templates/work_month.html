@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>月报</title>
+    <link rel="stylesheet" href="../css/plugIn/bootstrap.min.css" />
+    <link rel="stylesheet" href="../plugin/skin/default/datepicker.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script type="text/javascript" src="../js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="../js/plugIn/bootstrap.min.js"></script>
+    <script src="../plugin/WdatePicker.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+
+<body>
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/index/index">
+                    <img src="../image/logo.png" alt="logo">
+                </a>
+                <a class="btn-navbar collapsed" data-target=".nav-collapse" data-toggle="collapse" href="javascript:;">
+                    <img alt="" src="/image/menu-toggler.png">
+                </a>
+                <ul class="nav pull-right top-l">
+                    <li class="user user_t" style="padding-right: 30px;">
+                        <span class="public_number">
+                        </span>
+                    </li>
+                    <li class="user user_t admin_login_f_title">
+                        <span class="username">
+                            <div class="admin_login admin_login_f_title">
+                                <span class="login_user">frontceshi</span>
+                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                        class="back_index  "></a>
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navList noneSelect">
+        <!-- <div class="menu active">
+            <p class="primary"><a href="mainIndex.html"><span>首页</span></a></p>
+        </div> -->
+        <ul class="nav-item-menu">
+            <!-- <li class="nav-item">
+                <a href="index.html"><i class="nav-icon icon_1"></i><span>首页</span><i class="glyphicon glyphicon-menu"></i></a>
+            </li> -->
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-user"></i><span>个人中心</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="personal_info.html"><span>个人信息</span></a></li>
+                    <li><a href="personal_pwd.html"><span>密码修改</span></a></li>
+                    <!-- <li><a href="personal_act.html"><span>查看个人活跃度</span></a></li> -->
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-question-sign"></i><span>答疑工作</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <!-- <li><a href="QAcreate.html"><span>答疑与辅导申报</span></a></li> -->
+                    <li><a href="QAinquire.html"><span>答疑与辅导</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-knight"></i><span>团队信息</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                        <li class="teacher-box"><a href="CreateTeam.html"><span>创建团队</span></a></li>
+                        <li class="teacher-box active"><a href="myPlan.html"><span>我的计划</span></a></li>
+                        <li><a href="AddTeam.html"><span>加入团队</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item teacher-box ">
+                <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>活跃度</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="InquireActiveness.html"><span>查询活跃度</span></a></li>
+                    <li><a href="CompareActiveness.html"><span>活跃度对比</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item teacher-box  nav-show">
+                <a href="javascript:;"><i class="glyphicon glyphicon-object-align-left"></i><span>工作汇报</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="work_week.html"><span>周报</span></a></li>
+                    <li class="active"><a href="work_month.html"><span>月报</span></a></li>
+                    <li><a href="work_semester.html"><span>学期报</span></a></li>
+                    <li><a href="work_inquireRe.html"><span>查看教师工作汇报</span></a></li>
+                    <li><a href="work_conclusion.html"><span>考核评定汇总表</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-bell"></i><span>消息提示</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="message.html"><span>消息</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="admin-con" style="height:450px;">
+            <h5 class="main-h5">月报</h5>
+            <div class="search-con">
+                <select class="form-control info-select">
+                    <option>请选择导出月份</option>
+                    <option>1月份</option>
+                    <option>2月份</option>
+                    <option>3月份</option>
+                    <option>4月份</option>
+                    <option>5月份</option>
+                    <option>6月份</option>
+                    <option>7月份</option>
+                    <option>8月份</option>
+                    <option>9月份</option>
+                    <option>10月份</option>
+                    <option>11月份</option>
+                    <option>12月份</option>
+                </select>
+                <button type="submit" class="btn btn-primary">导出</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p>版权信息 教师激励平台</p>
+            <p><span>电话：</span>010-68546xxx<span>邮箱：</span>jiekou@126.com</p>
+        </div>
+    </div>
+</body>
+
+</html>

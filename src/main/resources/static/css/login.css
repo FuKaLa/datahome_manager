@@ -1,0 +1,238 @@
+html {
+    height: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.login_box,
+.login_box_bg {
+    width: 780px;
+    height: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -390px;
+    margin-top: -180px
+}
+
+.login_box_bg {
+    opacity: .17;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    background: #4e7ff2;
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, .5);
+    border-radius: 16px;
+}
+
+.login_box .login_box_lf {
+    float: left;
+    height: 260px;
+    text-align: center;
+    line-height: 260px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.border_r {
+    border-right: 2px solid #fff;
+    height: 260px;
+    float: right;
+    padding-right: 32px;
+    margin-right: 54px;
+    opacity: .2
+}
+
+.login_box .login_box_lf img {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.login_box .login_box_rt {
+    margin: 32px 0 0 10px;
+    width: 300px;
+}
+
+.login_box .title_box {
+    color: #fff;
+    font-size: 18px;
+    overflow: hidden;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.login_box .title_box .title_name {
+    float: left;
+}
+
+.login_box .title_box .title_change {
+    float: right;
+    position: relative;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.login_box .title_box .title_change i {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 6px;
+    height: 10px;
+    background: url(../image/icon_01.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 11
+}
+
+.login_box div .icon_name,
+.login_box div .icon_password,
+.icon_customers {
+    width: 25px;
+    height: 25px;
+    float: left;
+    display: block;
+    margin: 6px 10px 0 10px;
+}
+
+.login_box .code_box .login_input_bg {
+    width: 156px
+}
+
+.login_box .login_input_bg {
+    opacity: .16;
+    background: #FFF;
+    border-radius: 100px;
+    width: 300px;
+    height: 36px;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+.password_text_box {
+    width: 100%;
+    height: 26px
+}
+
+.login_box .tel_box .icon_name {
+    background: url(../image/nameicon.png) 0 0px no-repeat;
+    background-size: 25px 25px;
+}
+
+.login_box .tels_box .tels_number {
+    margin-left: 24px;
+}
+
+.login_box .code_box .code_number {
+    margin-left: 24px;
+    width: 130px;
+}
+
+.login_box .code_box .get_code {
+    float: right;
+    width: 130px;
+    height: 36px;
+    text-align: center;
+    line-height: 34px;
+    margin-left: 10px;
+    border-radius: 18px;
+    background: #4e7ff2;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login_box .code_box .get_code.active {
+    background: #BBB;
+}
+
+.login_box .code_box input[disabled] {
+    border: none !important;
+}
+
+.login_box .password_box .icon_password {
+    background: url(../image/passwordicon.png) 0 0px no-repeat;
+    background-size: 25px 25px;
+}
+
+.login_box .password_box input[name=password],
+.select-box,
+.login_box .password_box select,
+.login_box .tel_box input[name=name],
+.login_box .tels_box input[name=mobile_number],
+.login_box .code_box input[name=verifyCD] {
+    width: 220px;
+    border: 1px solid #AEAEAE;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    border: none;
+    outline: 0;
+    padding-left: 5px;
+    color: #000
+}
+
+.login_box .loginsubmit {
+    width: 300px;
+    height: 38px;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    outline: 0;
+    border: none;
+    color: #fff;
+    background: #4e7ff2;
+    border-radius: 100px
+}
+
+.password_text_box label {
+    color: #4e7ff2;
+    font-size: 12px;
+    padding-left: 22px;
+    line-height: 20px
+}
+
+.icon_customers {
+    background: url(../image/customers.png) 0 0px no-repeat;
+    background-size: 25px 25px;
+}
+
+.login_box_rt input::-webkit-input-placeholder {
+    color: #AEAEAE
+}
+
+.login_box_rt input::-ms-input-placeholder {
+    color: #AEAEAE
+}
+
+.login_box_rt input:-moz-placeholder {
+    color: #AEAEAE
+}
+
+.login_box_rt input::-moz-placeholder {
+    color: #AEAEAE
+}
+
+.login_box_rt input:-webkit-autofill {
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.login_box .password_box select {
+    color: #000;
+    width: 220px;
+}

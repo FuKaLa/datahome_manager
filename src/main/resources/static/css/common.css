@@ -1,0 +1,140 @@
+/*公共样式*/
+body{
+    color: #999;
+}
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+.clearfix:after{
+	content:".";/*加一段内容*/
+	display:block;/*让生成的元素以块级元素显示，占满剩余空间*/
+	height:0;/*避免生成的内容破坏原有布局高度*/
+	clear:both;/*清除浮动*/
+	visibility:hidden;/*让生成的内容不可见*/
+}
+.clearfix{
+	zoom:1;/*为IE6，7的兼容性设置*/
+}
+
+/*背景颜色*/
+.main-bg {
+	background: #f0f2f5;
+}
+/*页面内容区域宽度*/
+.main-con {
+	width: 1200px;
+	margin: 0 auto;
+}
+/*一行超出隐藏需要定义宽*/
+.text-over {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+/*两行超出隐藏需要定义宽*/
+.text-over-two {
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/*滚动条样式*/
+.scroll-bar::-webkit-scrollbar {
+	/*滚动条整体样式*/
+	width: 5px;
+	/*高宽分别对应横竖滚动条的尺寸*/
+	height: 5px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+	/*滚动条里面小方块*/
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	background: #ccc;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+	/*滚动条里面轨道*/
+	-webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	background: #fff;
+}
+/*footer*/
+.footer{
+	border-top: 1px solid #eee;
+	padding: 20px;
+	text-align: center;
+}
+.footer p{
+	color: #606266;
+	font-size: 14px;
+	line-height: 30px;
+}
+.footer p span{
+	margin-left: 30px;
+}
+/*nav-top*/
+.nav-top{
+	padding: 5px 0;
+	line-height: 84px;
+}
+.login-a{
+	display: block;
+	height: 20px;
+	cursor: pointer;
+}
+
+.nav-item-menu{width: 220px;height: 100%; padding-top: 20px; background: #263238;transition: all .3s;}
+.nav-item-menu a{display: block;overflow: hidden;padding-left: 20px;line-height: 46px;max-height: 46px;color: #ABB1B7;transition: all .3s;}
+.nav-item-menu a span{margin-left: 30px;}
+.nav-item{position: relative;}
+.nav-item.nav-show{border-bottom: none;}
+.nav-item ul{display: none;background: rgba(0,0,0,.1);}
+.nav-item.nav-show ul{display: block;}
+.nav-item>a:before{content: "";position: absolute;left: 0px;width: 2px;height: 46px;background: #34A0CE;opacity:0;transition: all .3s;}
+.nav .nav-icon{font-size: 20px;position: absolute;margin-left:-1px;}
+
+.icon_1::before{content: "\e259";}
+.icon_2::before{content: "\e259";}
+.icon_3::before{content: "\e259";}
+.icon_4::before{content: "\e259";}
+
+
+.glyphicon-menu{float:right;margin:16px 50px 0 0;font-size: 12px;transition: transform .3s;}
+.glyphicon-menu::before{content: "\e259";}
+.nav-show .glyphicon-menu{transform:rotate(180deg);}
+.nav-show,.nav-item>a:hover{color: #FFF;background:rgba(0,0,0,.1);}
+.nav-show>a:before,.nav-item>a:hover:before{opacity:1;}
+.nav-item li:hover a{color: #FFF;background: rgba(0, 0, 0,.1);}
+
+
+/* .nav-mini.nav{width: 60px;}
+.nav-mini.nav .nav-item>a span{display: none;}
+.nav-mini.nav .nav-more{margin-right: -20px;}
+.nav-mini.nav .nav-item ul{position: absolute;top:0px;left:60px;width: 180px;z-index: 99;background:#3C474C;overflow: hidden;}
+.nav-mini.nav .nav-item:hover{background:rgba(255,255,255,.1);}
+.nav-mini.nav .nav-item:hover .nav-item a{color:#FFF;}
+.nav-mini.nav .nav-item:hover a:before{opacity:1;}
+.nav-mini.nav .nav-item:hover ul{display: block;} */
+
+
+.nav-item-menu .active a{
+	color: #fff;
+}
+
+
+.margin-top-20{
+    margin-top: 20px;
+}
+
+

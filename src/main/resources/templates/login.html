@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教育大数据后台管理平台登录</title>
+    <link rel="stylesheet" href="../css/plugIn/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/plugIn/volidform.css" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script type="text/javascript" src="../js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="../js/plugIn/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/plugIn/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="../js/login.js"></script>
+</head>
+
+<body class="login_bg">
+    <div class="login_box_bg"></div>
+    <div class="login_box clearfix">
+        <div class="login_box_lf">
+            <img src="../image/login.png" alt="" class="">
+        </div>
+        <form class="login_box_rt left" id="loginForm">
+            <div class="login_box_rt account_box">
+                <div class="form-group tel_box clearfix">
+                    <label class="icon_name"></label>
+                    <input type="text" name="name" placeholder="请输入用户名" id="loginname" class="loginname"
+                        maxlength="20" datatype="*2-20" errormsg="用户名在2-20位之间" nullmsg="请输入账号" autocomplete="off"
+                        onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                    <span class="login_input_bg"></span>
+                </div>
+                <div class="form-group password_box clearfix">
+                    <label class="icon_password"></label>
+                    <input type="password" name="password" placeholder="请输入密码" id="loginpassword"
+                        class="loginpassword" datatype="*4-16" errormsg="请输入密码" maxlength="16" autocomplete="off"
+                        onkeyup="this.value=this.value.replace(/\s+/g,'')">
+
+                    <span class="login_input_bg"></span>
+                    
+                </div>
+                <div class="form-group password_box clearfix">
+                    <label class="icon_customers"></label>
+                    <select name="status" id="status" datatype="*" errormsg="请选择身份" class="select-box">
+                        <option value="">请选择身份</option>
+                        <option value="1">教务</option>
+                        <option value="2">校长</option>
+                        <option value="3">院长</option>
+                        <option value="4">系主任</option>
+                        <option value="5">教师</option>
+                        <option value="6">学生</option>
+                    </select>
+                    <span class="login_input_bg"></span>
+                </div>
+                <button  id="loginBtn" class="loginsubmit account_login">登录</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

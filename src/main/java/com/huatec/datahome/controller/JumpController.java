@@ -1,6 +1,4 @@
 package com.huatec.datahome.controller;
-//import com.huatec.datahome.config.StatisticConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,47 +12,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class JumpController {
-//	private final StatisticConfig statisticConfig;
-	
-//	@Autowired
-//	JumpController(StatisticConfig statisticConfig){
-//		this.statisticConfig = statisticConfig;
-//	}
 
-//    /**
-//     * 跳转到路径
-//     *
-//     * @return 页面跳转路径
-//     */
-//    @RequestMapping("index")
-//    public String index(){
-//        return "index";
+    /**
+     * 跳转到路径
+     *
+     * @return 页面跳转路径
+     */
+    @RequestMapping("/myPlan")
+    public String index(){
+        return "myPlan";
+    }
+
+    @RequestMapping("/zhuanyeyunying")
+    public String zhuanyeyunying(){
+        return "login";
+    }
+//
+//    @RequestMapping("/zhihuitea")
+//    public String zhihuitea(){
+//        return "zhihuitea";
 //    }
 //
-//    @RequestMapping("professionalOperating1")
-//    public String professionalOperating1(){
-//        return "professionalOperating1";
+//    @RequestMapping("/zhihuistu")
+//    public String zhihuistu(){
+//        return "zhihuistu";
 //    }
 //
-//    @RequestMapping("professionalanalysis2")
-//    public String professionalAnalysis2(){
-//        return "professionalanalysis2";
-//    }
-//
-//    @RequestMapping("wisdomStudy3")
+//    @RequestMapping("/zhihuistu")
 //    public String wisdomStudy3(Model model){
-//    	model.addAttribute("ipAndPort", statisticConfig.getStatisticIpAndPort());
+//    	model.addAttribute("ipAndPort", "hfdsfdn");
 //        return "wisdomStudy3";
-//    }
-//
-//    @RequestMapping("wisdomStudy4")
-//    public String wisdomStudy4(){
-//        return "wisdomStudy4";
-//    }
-//
-//    @RequestMapping("jobAnalysis5")
-//    public String jobAnalysis5(){
-//        return "jobAnalysis5";
 //    }
     
 }

@@ -4,8 +4,12 @@ server:
     uri-encoding: utf-8
 spring:
   thymeleaf:
-    mode: LEGACYHTML5
-    cache: false
+     mode: LEGACYHTML5
+     cache: true
+     prefix: classpath:/templates/
+     suffix: .html
+  resources:
+     static-locations: classpath:/static/
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss

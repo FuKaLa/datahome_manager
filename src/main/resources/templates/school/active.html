@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工作汇报</title>
+    <link rel="stylesheet" href="../../css/plugIn/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/plugIn/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script type="text/javascript" src="../../js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="../../js/plugIn/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/plugIn/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../js/plugIn/echarts.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/school.js"></script>
+    <script src="../../js/active.js"></script>
+</head>
+
+<body>
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/index/index">
+                    <img src="../../image/logo.png" alt="logo">
+                </a>
+
+                <ul class="nav pull-right top-l">
+                    <li class="user user_t" style="padding-right: 30px;">
+                        <span class="public_number">
+                        </span>
+                    </li>
+                    <li class="user user_t admin_login_f_title">
+                        <span class="username">
+                            <div class="admin_login admin_login_f_title">
+                                <span class="login_user">frontceshi</span>
+                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                        class="back_index  "></a>
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navList noneSelect">
+        <!-- <div class="menu active">
+            <p class="primary"><a href="mainIndex.html"><span>首页</span></a></p>
+        </div> -->
+        <ul class="nav-item-menu">
+            <!-- <li class="nav-item">
+                <a href="index.html"><i class="nav-icon icon_1"></i><span>首页</span><i class="glyphicon glyphicon-menu"></i></a>
+            </li> -->
+            <li class="nav-item nav-show school-nav">
+                <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>活跃度</span><i
+                        class="glyphicon glyphicon-menu"></i></a>
+                <ul class="active">
+                    <li><a href="active.html?type=look"><span>查询活跃度</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item school-nav">
+                <a href="javascript:;"><i class="glyphicon glyphicon-object-align-left"></i><span>工作汇报</span><i
+                        class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="work.html?type=yuan"><span>院工作汇报</span></a></li>
+                    <li><a href="work.html?type=xi"><span>系工作汇报</span></a></li>
+                    <li><a href="work.html?type=teacher"><span>老师工作汇报</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item nav-show jiaowen-nav">
+                <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>活跃度</span><i
+                        class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li class="active"><a href="active.html?type=school"><span>学校活跃度</span></a></li>
+                    <li><a href="active.html?type=yuan"><span>学院活跃度</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item jiaowen-nav">
+                <a href="javascript:;"><i class="glyphicon glyphicon-object-align-left"></i><span>活跃度对比</span><i
+                        class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="activeduibi.html?type=school"><span>学校活跃度对比</span></a></li>
+                    <li><a href="activeduibi.html?type=yuan"><span>学院活跃度对比</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="admin-con">
+            <h5 class="main-h5">活跃度</h5>
+            <div id="lineChart2" class="echars-con"></div>
+        </div>
+        <div class="footer">
+            <p>版权信息 教师激励平台</p>
+            <p><span>电话：</span>010-68546xxx<span>邮箱：</span>jiekou@126.com</p>
+        </div>
+    </div>
+</body>
+
+</html>
