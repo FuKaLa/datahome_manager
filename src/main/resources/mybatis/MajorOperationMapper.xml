@@ -3,44 +3,107 @@
 
 <mapper namespace="com.huatec.datahome.dao.MajorOprationDao">
 
-    <!--    <cache type="com.bootdo.common.utils.MybatisRedisCache" />-->
+    <!--专业运营基础-->
+    <select id="getBaseInfo" resultType="com.huatec.datahome.domain.TitlePageNum" >
 
-    <!-- 专业运营基础 -->
-    <select id="majorOprationBase" resultType="com.huatec.datahome.domain.TitlePageNumDO">
-        SELECT *
+         SELECT
+            `name` ,
+            `data_undergraduate` AS dataUndergraduate,
+            `data_vocational` AS dataVocational,
+            `page_title_num` AS pageTitleNum,
+            `data_other` AS dataOther
         FROM title_page_num
-        ORDER BY page_title_num ASC
+
     </select>
 
-    <!-- 专业就业率 -->
-    <select id="majorEmploymentRate" resultType="com.huatec.datahome.domain.KeyStrValDoubleDO">
+    <!--* 专业就业率-->
+    <select id="getMajorRate" resultType="com.huatec.datahome.domain.MajorEmploymentRate">
+
         SELECT
-            tb.major_name      AS `name`,
-            tb.employment_rate AS `value`
+            tb.major_name      AS majorName,
+            tb.employment_rate AS employmentRate
         FROM major_employment_rate tb
+
     </select>
 
-    <!-- 工程师行业背景 -->
-    <select id="engineerBackground" resultType="com.huatec.datahome.domain.KeyStrValIntDO">
+    <!--* 工程师行业背景人数，-->
+    <select id="getBackgroundNum" resultType="com.huatec.datahome.domain.ProjectorBackground">
+
         SELECT
-            tb.major_name AS `name`,
-            tb.people_num AS `value`
+            tb.major_name AS majorName,
+            tb.people_num AS peopleNum
         FROM projector_background tb
-        order by tb.people_num desc
+
     </select>
 
-    <select id="queryProvinceSchoolList" resultType="Map">
+    <!--* 专业运营基础-->
+    <update id="updateBaseInfo" parameterType="java.util.List">
 
-        <!-- SELECT d.collage_name name, CONCAT(lon,',',lat) value from longlat l join (select d.collage_name,d.province,d.city  as city from department d where d.region != '2025项目') d on d.city=l.city -->
-        select DISTINCT collage_name name,CONCAT(lon,',',latt) value from department
-        <where>
-            <if test="province != null and province != ''">AND province=#{province}</if>
-        </where>
-    </select>
+        <foreach collection="baseInfo" item="item" index="index" open="" close="" separator=";">
+            UPDATE `title_page_num`
+            <set>
+                <if test="item.dataUndergraduate !=null " >
+                    `data_undergraduate` = #{item.dataUndergraduate}
+                </if>
+                <if test="item.dataVocational !=null " >
+                    `data_vocational` = #{item.dataVocational}
+                </if>
+                <if test="item.pageTitleNum !=null " >
+                    `page_title_num` = #{item.pageTitleNum}
+                </if>
+                <if test="item.dataOther !=null " >
+                    `data_other` = #{item.dataOther}
+                </if>
+            </set>
 
-    <!--各省学校数量-->
-    <select id="queryProvinceSchoolNumberList" resultType="com.huatec.datahome.domain.KeyStrValLongDO">
-        select  province 'name',count(DISTINCT dep_name) 'value' from department GROUP BY province
-    </select>
+            <where>
+                `name` = #{item.name}
+            </where>
+
+        </foreach>
+
+    </update>
+
+    <!--* 专业就业率-->
+    <update id="updateMajorRate" parameterType="java.util.List">
+
+        <foreach collection="majorRate" item="item" index="index" open="" close="" separator=";">
+            UPDATE `major_employment_rate`
+            <set>
+
+                <if test="item.employmentRate != null " >
+                    `employment_rate` = #{item.employmentRate}
+                </if>
+
+            </set>
+
+            <where>
+                `major_name` = #{item.majorName}
+            </where>
+
+        </foreach>
+
+    </update>
+
+    <!--* 工程师行业背景人数，-->
+    <update id="updateBackgroundNum" parameterType="java.util.List">
+
+        <foreach collection="backgroundNum" item="item" index="index" open="" close="" separator=";">
+            UPDATE `projector_background`
+            <set>
+
+                <if test="item.peopleNum != null " >
+                    `people_num` = #{item.peopleNum}
+                </if>
+
+            </set>
+
+            <where>
+                `major_name` = #{item.majorName}
+            </where>
+
+        </foreach>
+
+    </update>
 
 </mapper>

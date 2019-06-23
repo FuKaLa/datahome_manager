@@ -24,6 +24,16 @@ public class MajorBasic {
 
     private Date setupTime;
 
+    private Integer majorStudent;
+
+    public Integer getMajorStudent() {
+        return majorStudent;
+    }
+
+    public void setMajorStudent(Integer majorStudent) {
+        this.majorStudent = majorStudent;
+    }
+
     public String getMajorName() {
         return majorName;
     }

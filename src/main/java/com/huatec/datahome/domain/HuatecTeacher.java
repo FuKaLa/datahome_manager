@@ -1,9 +1,9 @@
 package com.huatec.datahome.domain;
 
 /**
- * Created by Administrator on 2019/6/21.
+ * Created by Administrator on 2019/6/23.
  */
-public class Common1 {
+public class HuatecTeacher {
 
     private String name;
 

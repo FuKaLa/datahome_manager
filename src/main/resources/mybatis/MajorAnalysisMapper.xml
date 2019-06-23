@@ -2,57 +2,98 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.huatec.datahome.dao.MajorAnalysisDao">
-    
-    <!-- 项目部课程数量top10 -->
-    <select id="getMajorNum" resultType="java.lang.String">
-        select major_name from(
-        SELECT major_name, sort
-        FROM major_basic
-        GROUP BY major_name) tb
-        ORDER BY tb.sort asc
-    </select>
-    
-    <select id="getMajorBaseInfo" resultType="com.huatec.datahome.domain.MajorBasicDO">
+
+
+    <select id="getMajorBasic" resultType="com.huatec.datahome.domain.MajorBasic" parameterType="string">
+
         SELECT
-            major_name,
-            major_book,
-            major_course,
-            major_course_hour,
-            major_student,
-            major_teacher,
+            major_name AS majorName,
+            major_book AS majorBook,
+            major_course AS  majorCourse,
+            major_course_hour AS majorCourseHour,
+            major_student AS majorStudent,
+            major_teacher AS majorTeacher,
             undergraduate,
             vocational,
-            setup_time,
-            major_satisfaction
+            setup_time AS setupTime,
+            major_satisfaction AS majorSatisfaction
         FROM major_basic
         WHERE major_name = #{majorName}
+
     </select>
-    
-    <select id="getEmploymentPosition" resultType="com.huatec.datahome.domain.KeyStrValIntDO">
+
+    <!--获取就业岗位数量分布-->
+    <select id="getMajorEmployment" resultType="com.huatec.datahome.domain.MajorEmployment" parameterType="string">
+
         SELECT
-            employment_job name,
-            employment_num value
+            employment_job AS employmentJob,
+            employment_num AS employmentNum
         FROM major_employment
         WHERE major_name = #{majorName}
-        ORDER BY employment_num desc
+
     </select>
-    
-    <select id="gradeDistributed" resultType="com.huatec.datahome.domain.MajorAdmissionDO">
-        SELECT
-            grade,
-            vocational,
-            undergraduate
-        FROM major_admission
-        WHERE major_name = #{majorName}
-    </select>
-    
-    <select id="getDoubleCreate" resultType="com.huatec.datahome.domain.DoubleCreateDO">
-        SELECT
-            year_achievement,
-            product,
-            team
-        FROM double_create
-        WHERE major_name = #{majorName}
-    </select>
+
+    <update id="updateMajorBasic" parameterType="java.util.List">
+
+        <foreach collection="majorBasics" item="item" index="index" open="" close="" separator=";">
+            UPDATE `major_basic`
+            <set>
+                <if test="item.majorStudent !=null " >
+                    `major_student` = #{item.majorStudent}
+                </if>
+                <if test="item.majorBook !=null " >
+                    `major_book` = #{item.majorBook}
+                </if>
+                <if test="item.majorTeacher !=null " >
+                    `major_teacher` = #{item.majorTeacher}
+                </if>
+                <if test="item.majorCourse !=null " >
+                    `major_course` = #{item.majorCourse}
+                </if>
+                <if test="item.major_course_hour !=null " >
+                    `major_course_hour` = #{item.major_course_hour}
+                </if>
+                <if test="item.majorSatisfaction !=null " >
+                    `major_satisfaction` = #{item.majorSatisfaction}
+                </if>
+                <if test="item.undergraduate !=null " >
+                    `undergraduate` = #{item.undergraduate}
+                </if>
+                <if test="item.vocational !=null " >
+                    `vocational` = #{item.vocational}
+                </if>
+                <if test="item.setupTime !=null " >
+                    `setup_time` = #{item.setupTime}
+                </if>
+            </set>
+
+            <where>
+                 `major_name` = #{item.majorName}
+            </where>
+
+        </foreach>
+
+    </update>
+
+    <!--修改就业岗位数量分布-->
+    <update id="updateMajorEmployment" parameterType="java.util.List">
+
+        <foreach collection="majorEmployments" item="item" index="index" open="" close="" separator=";">
+            UPDATE `major_employment`
+            <set>
+                <if test="item.employmentNum !=null " >
+                    `employment_num` = #{item.employmentNum}
+                </if>
+            </set>
+
+            <where>
+                 `major_name` = #{item.majorName}
+                AND
+                `employment_job` = #{item.employmentJob}
+            </where>
+
+        </foreach>
+
+    </update>
 
 </mapper>

@@ -1,16 +1,17 @@
 package com.huatec.datahome.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dingjiatian on 2019/6/21.
  */
-public class SmartLearningStuDO {
+public class SmartLearningStuDO implements Serializable {
 
     /**
      * 智慧学习基础
      */
-    private List<Common1> baseInfo;
+    private List<HuatecStudent> baseInfo;
 
     /**
      * 最近30天各专业学习人数占比
@@ -30,7 +31,7 @@ public class SmartLearningStuDO {
     /**
      * 接入方式占比
      */
-    private List<Common1> loginNum;
+    private List<LoginRecord> loginNum;
 
     /**
      * 项目部学习热度top5
@@ -41,19 +42,19 @@ public class SmartLearningStuDO {
      * 今天在线学生小时数量
      * 不维护
      */
-    public List<Common1> getBaseInfo() {
+    public List<HuatecStudent> getBaseInfo() {
         return baseInfo;
     }
 
-    public void setBaseInfo(List<Common1> baseInfo) {
+    public void setBaseInfo(List<HuatecStudent> baseInfo) {
         this.baseInfo = baseInfo;
     }
 
-    public List<Common1> getLoginNum() {
+    public List<LoginRecord> getLoginNum() {
         return loginNum;
     }
 
-    public void setLoginNum(List<Common1> loginNum) {
+    public void setLoginNum(List<LoginRecord> loginNum) {
         this.loginNum = loginNum;
     }
 }

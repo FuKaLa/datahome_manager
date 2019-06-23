@@ -1,11 +1,12 @@
 package com.huatec.datahome.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2019/6/21.
  */
-public class MajorAnalysisDO {
+public class MajorAnalysisDO implements Serializable {
 
     private String type;
 
@@ -30,7 +31,7 @@ public class MajorAnalysisDO {
     /**
      * 就业岗位数量分布
      */
-    private List<Common1> employmentNum;
+    private List<MajorEmployment> employmentNum;
 
     public String getType() {
         return type;
@@ -48,11 +49,11 @@ public class MajorAnalysisDO {
         this.majorBasic = majorBasic;
     }
 
-    public List<Common1> getEmploymentNum() {
+    public List<MajorEmployment> getEmploymentNum() {
         return employmentNum;
     }
 
-    public void setEmploymentNum(List<Common1> employmentNum) {
+    public void setEmploymentNum(List<MajorEmployment> employmentNum) {
         this.employmentNum = employmentNum;
     }
 }

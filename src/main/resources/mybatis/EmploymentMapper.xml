@@ -3,64 +3,154 @@
 
 <mapper namespace="com.huatec.datahome.dao.EmploymentDao">
 
-    <!-- 项目部课程数量top10 -->
-    <select id="employmentNum" resultType="com.huatec.datahome.domain.EmploymentDO" parameterType="String">
-        SELECT
-            undergraduate_female,
-            undergraduate_male,
-            vocational_female,
-            vocational_male
-        FROM employment
-        where major_name = #{majorName}
+
+
+    <!--累计毕业生数量-->
+    <select id="getGraduateNum" resultType="com.huatec.datahome.domain.EmploymentDO" parameterType="string">
+
+        SELECT `major_name` AS majorName,
+        `vocational_female` AS vocationalFemale,
+        `undergraduate_female` AS undergraduateFemale,
+        `vocational_male` AS vocationalMale,
+        `undergraduate_male` AS undergraduateMale
+        FROM `employment`
+        WHERE `major_name` = #{majorName}
+
     </select>
 
-    <select id="structureNum" resultType="com.huatec.datahome.domain.KeyStrValIntDO">
-        SELECT
-            structure  name,
-            employment value
-        FROM employment_structure
-        where major_name = #{majorName}
+
+    <!--毕业生能力分析-->
+    <select id="getGraduateAbility"  resultType="com.huatec.datahome.domain.GraduateAbility" parameterType="string">
+
+        SELECT `ability` AS ability,
+        `ability_value` AS abilityValue,
+        `major_name` AS majorName,
+        `type`
+        FROM
+        `graduate_ability`
+        WHERE `major_name` = #{majorName}
+
     </select>
 
-    <select id="salaryCompared" resultType="com.huatec.datahome.domain.SalaryComparedDO">
-        SELECT
-            grade,
-            average_salary,
-            graduate_salary
-        FROM salary_compared
-        where major_name = #{majorName}
-        ORDER BY grade ASC
+    <!--毕业生就业结构-->
+    <select id="getEmploymentStructure" resultType="com.huatec.datahome.domain.EmploymentStructure" parameterType="string">
+
+    SELECT
+        `structure` AS structure,
+        `employment`AS employment,
+        `major_name` AS majorName
+        FROM
+        `employment_structure`
+        WHERE `major_name` = #{majorName}
+
     </select>
 
-    <select id="graduateSalary" resultType="com.huatec.datahome.domain.GraduateSalaryDO">
-        SELECT
-            graduate_salary,
-            average_salary,
-            graduation_duration
-        FROM graduate_salary
-        where major_name = #{majorName}
+
+    <!--毕业生平均薪资跟踪-->
+    <select id="getGraduateSalary" resultType="com.huatec.datahome.domain.GraduateSalary" parameterType="string">
+
+      SELECT
+         `graduation_duration` AS graduationDuration,
+          `major_name` AS majorName,
+          `average_salary` AS averageSalary,
+          `graduate_salary` AS graduateSalary
+        FROM
+        `graduate_salary`
+        WHERE `major_name` = #{majorName}
+
     </select>
 
-    <select id="employmentRadio" resultType="com.huatec.datahome.domain.KeyStrValDoubleDO">
-        SELECT
-            grade name,
-            radio value
-        FROM employment_radio
-        where major_name = #{majorName}
-        ORDER BY grade ASC
-    </select>
 
-    <select id="graduateAbility" resultType="com.huatec.datahome.domain.GraduateAbilityDO">
-        SELECT *
-        FROM graduate_ability
-        where major_name = #{majorName}
-        ORDER BY type, ability
-    </select>
+    <!--修改累计毕业生数量-->
+    <update id="updateGraduateNum" parameterType="com.huatec.datahome.domain.EmploymentDO">
 
-    <select id="graduateEmployment" resultType="com.huatec.datahome.domain.GraduateEmploymentDO">
-        SELECT *
-        FROM graduate_employment
-        where major_name = #{majorName}
-    </select>
+       UPDATE `employment`
+            <set>
+                <if test="vocationalFemale != null">
+                    `vocational_female` = #{vocationalFemale},
+                </if>
+                <if test="undergraduateFemale != null">
+                    `undergraduate_female` = #{undergraduateFemale},
+                </if>
+                <if test="vocationalMale != null">
+                    `vocational_male` = #{vocationalMale},
+                </if>
+                <if test="undergraduateMale != null">
+                    `undergraduate_male` = #{undergraduateMale}
+                </if>
+            </set>
+            WHERE
+                `major_name` = #{type}
+
+    </update>
+
+    <!--毕业生能力分析-->
+    <update id="updateGraduateAbility" parameterType="java.util.List">
+
+        <foreach collection="graduateAbilities" item="item" index="index" open="" close="" separator=";">
+            UPDATE `graduate_ability`
+            <set>
+                <if test="item.abilityValue !=null and item.abilityValue !='' " >
+                    `ability_value` = #{item.abilityValue}
+                </if>
+            </set>
+
+            <where>
+                `ability` = #{item.ability}
+                AND `major_name` = #{item.majorName}
+                AND `type` = #{item.type}
+            </where>
+
+        </foreach>
+
+    </update>
+
+
+    <!--毕业生就业结构-->
+    <update id="updateEmploymentStructure" parameterType="java.util.List">
+
+
+        <foreach collection="employmentStructures" item="item" index="index" open="" close="" separator=";">
+            UPDATE `employment_structure`
+            <set>
+                <if test="item.employment !=null " >
+                    `employment` = #{item.employment}
+                </if>
+            </set>
+
+            <where>
+                `structure` = #{item.structure}
+                AND
+                `major_name` = #{item.majorName}
+
+            </where>
+
+        </foreach>
+
+    </update>
+
+    <!--毕业生平均薪资跟踪-->
+    <update id="updateGraduateSalary" parameterType="java.util.List">
+        <foreach collection="graduateSalarie" item="item" index="index" open="" close="" separator=";">
+            UPDATE `graduate_salary`
+            <set>
+                <if test="item.averageSalary !=null " >
+                    `average_salary` = #{item.averageSalary},
+                </if>
+                <if test="item.graduateSalary !=null " >
+                    `graduate_salary` = #{item.graduateSalary}
+                </if>
+            </set>
+
+            <where>
+                `graduation_duration` = #{item.graduationDuration}
+                AND
+                `major_name` = #{item.majorName}
+
+            </where>
+
+        </foreach>
+
+    </update>
 
 </mapper>
