@@ -8,6 +8,7 @@ import com.huatec.datahome.service.EmploymentService;
 import com.huatec.datahome.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,13 +22,13 @@ import java.util.Map;
  * @date 2019-06-21
  */
 @Controller
-@RequestMapping("/employment")
+//@RequestMapping("/employment")
 public class EmploymentController {
 
     @Autowired
     private EmploymentService employmentService;
 
-    @RequestMapping("/update")
+    @RequestMapping("/updateEmployment")
     @ResponseBody
     public R update(@RequestBody EmploymentDO employmentDO) {
 
@@ -46,9 +47,8 @@ public class EmploymentController {
         return R.ok();
     }
 
-    @RequestMapping("/getByMajor")
-    @ResponseBody
-    public R getByMajor(String majorName) {
+    @RequestMapping("/getByMajorEmployment")
+    public String getByMajor(Model model, String majorName) {
         //累计毕业生数量
         EmploymentDO employmentDO = employmentService.getGraduateNum(majorName);
 
@@ -61,10 +61,11 @@ public class EmploymentController {
         //毕业生平均薪资跟踪
         List<GraduateSalary> graduateSalaries = employmentService.getGraduateSalary(majorName);
 
-        employmentDO.setEmployStructure(employmentStructure);
-        employmentDO.setGraduateAbilitie(graduateAbility);
-        employmentDO.setGraduateSalarie(graduateSalaries);
-        return R.resultData(employmentDO);
+        model.addAttribute("employmentDO",employmentDO);
+        model.addAttribute("graduateAbility",graduateAbility);
+        model.addAttribute("employmentStructure",employmentStructure);
+        model.addAttribute("graduateSalaries",graduateSalaries);
+        return "jiuyefenxi";
     }
 
 

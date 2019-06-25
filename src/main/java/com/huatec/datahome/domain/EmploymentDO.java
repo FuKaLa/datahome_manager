@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class EmploymentDO implements Serializable{
     //专业类型
-    private String type;
+    private String majorName;
 
     /**
      * 累计毕业生数量
@@ -43,12 +43,12 @@ public class EmploymentDO implements Serializable{
      */
     private List<GraduateSalary> graduateSalarie;
 
-    public String getType() {
-        return type;
+    public String getMajorName() {
+        return majorName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMajorName(String majorName) {
+        this.majorName = majorName;
     }
 
     public Integer getUndergraduateMale() {

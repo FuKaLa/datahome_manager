@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教育大数据后台管理平台</title>
+    <link rel="stylesheet" href="css/plugIn/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/plugIn/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/plugIn/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/plugIn/bootstrap-table.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jiuyefenxi.js"></script>
+</head>
+<body>
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/index/index">
+                    <img src="image/logo.png" alt="logo">
+                </a>
+                <ul class="nav pull-right top-l">
+                    <li class="user user_t" style="padding-right: 30px;">
+                        <span class="public_number">
+                        </span>
+                    </li>
+                    <li class="user user_t admin_login_f_title">
+                        <span class="username">
+                            <div class="admin_login admin_login_f_title">
+                                <span class="login_user">项目经理</span>
+                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                        class="back_index "></a>
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navList noneSelect">
+        <ul class="nav-item-menu">
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-user"></i><span>专业运营</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a onclick="zhuanyeyunying()"><span>专业运营</span></a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-question-sign"></i><span>专业分析</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="QAinquire.html"><span>通信方向</span></a></li>
+                </ul>
+                <ul>
+                    <li><a href="QAinquire.html"><span>物联网方向</span></a></li>
+                </ul>
+                <ul>
+                    <li><a href="QAinquire.html"><span>云计算方向</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item nav-show">
+                <a href="javascript:;"><i class="glyphicon glyphicon-knight"></i><span>智慧学习</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li class="teacher-box"><a href="CreateTeam.html"><span>智慧学习【老师】</span></a></li>
+                    <li class="teacher-box active"><a href="myPlan.html"><span>智慧学习【学生】</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item teacher-box ">
+                <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>就业分析</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="InquireActiveness.html"><span>全部专业方向</span></a></li>
+                    <li><a href="CompareActiveness.html"><span>通信</span></a></li>
+                    <li><a href="CompareActiveness.html"><span>物联网</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="admin-con">
+            <h5 class="main-h5">就业分析--<span th:text="${employmentDO.majorName}" class="majorName"></span></h5>
+            <form class="form-horizontal form-admin" id="edit">
+
+                <h6 class="main-h6">累计毕业生数量</h6>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">本科</label>
+                    <label class="col-sm-1 control-label">男：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentDO.undergraduateMale}
+                               id="undergraduateMale" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">女：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentDO.undergraduateFemale}
+                               id="undergraduateFemale" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">高职</label>
+                    <label class="col-sm-1 control-label">男：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentDO.vocationalMale}
+                               id="vocationalMale"  onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">女：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentDO.vocationalFemale}
+                               id="vocationalFemale" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <h6 class="main-h6">毕业生就业能力数量分析</h6>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">本科</label>
+                    <label class="col-sm-1 control-label">技术能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[5].abilityValue}
+                               id="v5" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">执行力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[6].abilityValue}
+                               id="v6" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">职业素质：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[7].abilityValue}
+                               id="v7" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">沟通能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[8].abilityValue}
+                               id="v8" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">学习能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[9].abilityValue}
+                               id="v9" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">高职</label>
+                    <label class="col-sm-1 control-label">技术能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[0].abilityValue}
+                               id="v0" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">执行力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[1].abilityValue}
+                               id="v1" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">职业素质：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[2].abilityValue}
+                               id="v2" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">沟通能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[3].abilityValue}
+                               id="v3" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">学习能力：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateAbility[4].abilityValue}
+                               id="v4" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+
+                <h6 class="main-h6">毕业生就业结构数量分析</h6>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">协议就业：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[0].employment}
+                               id="xyjy" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">升学：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[1].employment}
+                               id="sx" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">灵活就业：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[2].employment}
+                               id="lhjy" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label"> 出国（境）：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[3].employment}
+                               id="cg" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">毕业创业：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[4].employment}
+                               id="bycy" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">待就业：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${employmentStructure[5].employment}
+                               id="djy" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <h6 class="main-h6">毕业生平均薪资跟踪</h6>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">第一年</label>
+                    <label class="col-sm-1 control-label">毕业生平均薪资(北京)：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[0].averageSalary}
+                               id="bj0" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">毕业生平均薪资：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[0].graduateSalary}
+                               id="by0" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">第二年</label>
+                    <label class="col-sm-1 control-label">毕业生平均薪资(北京)：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[1].averageSalary}
+                               id="bj1" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">毕业生平均薪资：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[1].graduateSalary}
+                               id="by1" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">第三年</label>
+                    <label class="col-sm-1 control-label">毕业生平均薪资(北京)：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[2].averageSalary}
+                               id="bj2" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">毕业生平均薪资：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${graduateSalaries[2].graduateSalary}
+                               id="by2" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+            </form>
+            <h6 class="main-h6"></h6>
+            <div class="form-group">
+                <button onclick="update()" class="btn btn-primary btn-form">确认修改</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p>版权信息 教育大数据后台管理平台</p>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    function zhuanyeyunying() {
+//        location.href = "/web/weix_product?parent_id=" + id;
+        location.href = "/zhuanyeyunying";
+    }
+</script>
+
+
+</html>

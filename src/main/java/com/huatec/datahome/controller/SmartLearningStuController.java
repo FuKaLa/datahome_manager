@@ -8,6 +8,7 @@ import com.huatec.datahome.service.SmartLearningStuService;
 import com.huatec.datahome.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,13 +18,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 专业运营
+ * 智慧学习学生
  * @author dingjiatian
  * @date 2019-06-21
  */
 
 @Controller
-@RequestMapping("/smartLearningStu")
+//@RequestMapping("/smartLearningStu")
 public class SmartLearningStuController {
     private final SmartLearningStuService smartLearningStuService;
 
@@ -32,7 +33,7 @@ public class SmartLearningStuController {
         this.smartLearningStuService = smartLearningStuService;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/updateSmartLearningStu")
     @ResponseBody
     public R update(@RequestBody SmartLearningStuDO smartLearningStuDO) {
         /**
@@ -49,18 +50,15 @@ public class SmartLearningStuController {
         return R.ok();
     }
 
-    @RequestMapping("/getDetail")
-    @ResponseBody
-    public R getByMajor() {
+    @RequestMapping("/getDetailSmartLearningStu")
+    public String getByMajor(Model model) {
 
         List<HuatecStudent> baseInfo = smartLearningStuService.getBaseInfo();
 
         List<LoginRecord> loginNum = smartLearningStuService.getLoginNum();
-
-        SmartLearningStuDO aDo = new SmartLearningStuDO();
-        aDo.setBaseInfo(baseInfo);
-        aDo.setLoginNum(loginNum);
-        return R.resultData(aDo);
+        model.addAttribute("baseInfo",baseInfo);
+        model.addAttribute("loginNum",loginNum);
+        return "zhihuistu";
     }
 
 

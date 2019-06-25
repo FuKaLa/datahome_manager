@@ -80,7 +80,7 @@
                 </if>
             </set>
             WHERE
-                `major_name` = #{type}
+                `major_name` = #{majorName}
 
     </update>
 

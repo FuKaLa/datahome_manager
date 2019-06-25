@@ -1,4 +1,4 @@
-var host = "http://local:8989";
+var host = "http://localhost:8989";
 var userData ={};
 $(function () {
     $('.nav-item>a').on('click', function () {

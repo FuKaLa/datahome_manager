@@ -14,30 +14,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class JumpController {
 
     /**
-     * 跳转到路径
-     *
-     * @return 页面跳转路径
+     *登录跳转
      */
-    @RequestMapping("/myPlan")
-    public String index(){
-        return "myPlan";
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
     }
+
+    /**
+     * 专业运营
+     */
 
     @RequestMapping("/zhuanyeyunying")
     public String zhuanyeyunying(){
-        return "login";
+        return "zhuanyeyunying";
     }
-//
-//    @RequestMapping("/zhihuitea")
-//    public String zhihuitea(){
-//        return "zhihuitea";
-//    }
-//
-//    @RequestMapping("/zhihuistu")
-//    public String zhihuistu(){
-//        return "zhihuistu";
-//    }
-//
+
+    /**
+     * 专业分析
+     * majorName
+     * @return
+     */
+    @RequestMapping("/zhuanyefenxi")
+    public String zhuanyefenxi(){
+        return "zhuanyefenxi";
+    }
+
+    /**
+     * 智慧学习老师
+     */
+    @RequestMapping("/zhihuitea")
+    public String zhihuitea(){
+        return "zhihuitea";
+    }
+    /**
+     * 智慧学习学生
+     */
+    @RequestMapping("/zhihuistu")
+    public String zhihuistu(){
+        return "zhihuistu";
+    }
+
+    /**
+     * 就业分析
+     * majorName
+     * @return
+     */
+    @RequestMapping("/jiuyefenxi")
+    public String jiuyefenxi(){
+        return "jiuyefenxi";
+    }
+
 //    @RequestMapping("/zhihuistu")
 //    public String wisdomStudy3(Model model){
 //    	model.addAttribute("ipAndPort", "hfdsfdn");

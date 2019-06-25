@@ -5,6 +5,7 @@ import com.huatec.datahome.service.SmartLearningTeaService;
 import com.huatec.datahome.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 专业运营
+ * 智慧学习老师
  * @author dingjiatian
  * @date 2019-06-21
  */
 
 @Controller
-@RequestMapping("/smartLearningTea")
+//@RequestMapping("/smartLearningTea")
 public class SmartLearningTeaController {
     private final SmartLearningTeaService smartLearningTeaService;
 
@@ -29,7 +30,7 @@ public class SmartLearningTeaController {
         this.smartLearningTeaService = smartLearningTeaService;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/updateSmartLearningTea")
     @ResponseBody
     public R update(@RequestBody SmartLearningTeaDO smartLearningTeaDO) {
         /**
@@ -54,9 +55,8 @@ public class SmartLearningTeaController {
         return R.ok();
     }
 
-    @RequestMapping("/getDetail")
-    @ResponseBody
-    public R getByMajor() {
+    @RequestMapping("/getDetailSmartLearningTea")
+    public String getByMajor(Model model) {
         /**
          * 智慧学习基础
          */
@@ -75,12 +75,12 @@ public class SmartLearningTeaController {
          *
          */
         List<CourseResources> digitizationNum = smartLearningTeaService.getSzhzyNum();
-        SmartLearningTeaDO aDo = new SmartLearningTeaDO();
-        aDo.setBaseInfo(baseInfo);
-        aDo.setCourseNum(courseNum);
-        aDo.setDigitizationNum(digitizationNum);
-        aDo.setJpbxNum(jpbxNum);
-        return R.resultData(aDo);
+
+        model.addAttribute("baseInfo", baseInfo);
+        model.addAttribute("jpbxNum",jpbxNum);
+        model.addAttribute("courseNum",courseNum);
+        model.addAttribute("digitizationNum",digitizationNum);
+        return "zhihuitea";
     }
 
 

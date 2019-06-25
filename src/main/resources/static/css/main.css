@@ -296,7 +296,7 @@
     height: 450px;
 }
 .form-admin{
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
     padding: 60px 0;
 }
@@ -579,4 +579,21 @@
     float: left;
     width: 25%;
     margin-right: 20px;
+}
+
+.main-h6{
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+.main-title{
+    font-weight: bold;
+    line-height: 180%;
+    padding-top: 5px;
+}
+.col-sm-1{
+    padding-left: 0;
+    padding-right: 0;
 }

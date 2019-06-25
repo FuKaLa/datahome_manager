@@ -39,28 +39,28 @@
             UPDATE `major_basic`
             <set>
                 <if test="item.majorStudent !=null " >
-                    `major_student` = #{item.majorStudent}
+                    `major_student` = #{item.majorStudent},
                 </if>
                 <if test="item.majorBook !=null " >
-                    `major_book` = #{item.majorBook}
+                    `major_book` = #{item.majorBook},
                 </if>
                 <if test="item.majorTeacher !=null " >
-                    `major_teacher` = #{item.majorTeacher}
+                    `major_teacher` = #{item.majorTeacher},
                 </if>
                 <if test="item.majorCourse !=null " >
-                    `major_course` = #{item.majorCourse}
+                    `major_course` = #{item.majorCourse},
                 </if>
-                <if test="item.major_course_hour !=null " >
-                    `major_course_hour` = #{item.major_course_hour}
+                <if test="item.majorCourseHour !=null " >
+                    `major_course_hour` = #{item.majorCourseHour},
                 </if>
                 <if test="item.majorSatisfaction !=null " >
-                    `major_satisfaction` = #{item.majorSatisfaction}
+                    `major_satisfaction` = #{item.majorSatisfaction},
                 </if>
                 <if test="item.undergraduate !=null " >
-                    `undergraduate` = #{item.undergraduate}
+                    `undergraduate` = #{item.undergraduate},
                 </if>
                 <if test="item.vocational !=null " >
-                    `vocational` = #{item.vocational}
+                    `vocational` = #{item.vocational},
                 </if>
                 <if test="item.setupTime !=null " >
                     `setup_time` = #{item.setupTime}

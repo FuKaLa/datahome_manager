@@ -1,6 +1,9 @@
 package com.huatec.datahome.domain;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Date;
 
 /**
  * Created by Administrator on 2019/6/21.
@@ -16,15 +19,26 @@ public class MajorBasic {
 
     private Integer majorCourseHour;
 
-    private Integer majorSatisfaction;
+    private Double majorSatisfaction;
 
     private Integer undergraduate;
 
     private Integer vocational;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date setupTime;
+    private String setupDate;
 
     private Integer majorStudent;
+
+    public String getSetupDate() {
+        return setupDate;
+    }
+
+    public void setSetupDate(String setupDate) {
+        this.setupDate = setupDate;
+    }
 
     public Integer getMajorStudent() {
         return majorStudent;
@@ -74,11 +88,11 @@ public class MajorBasic {
         this.majorCourseHour = majorCourseHour;
     }
 
-    public Integer getMajorSatisfaction() {
+    public Double getMajorSatisfaction() {
         return majorSatisfaction;
     }
 
-    public void setMajorSatisfaction(Integer majorSatisfaction) {
+    public void setMajorSatisfaction(Double majorSatisfaction) {
         this.majorSatisfaction = majorSatisfaction;
     }
 

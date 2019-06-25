@@ -5,23 +5,36 @@ server:
 spring:
   thymeleaf:
      mode: LEGACYHTML5
-     cache: true
+     cache: false
      prefix: classpath:/templates/
      suffix: .html
   resources:
      static-locations: classpath:/static/
   jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+     time-zone: GMT+8
+     date-format: yyyy-MM-dd HH:mm:ss
   profiles: 
-    active: dev
+     active: dev
   http:
-    multipart:
-      max-file-size: 30Mb
-      max-request-size: 30Mb
+     multipart:
+     max-file-size: 30Mb
+     max-request-size: 30Mb
+  devtools:
+     restart:
+        enabled: true  #设置开启热部署
+     exclude: templates/**
+     freemarker:
+        cache: false    #页面不加载缓存，修改即时生效
 
 mybatis: 
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: mybatis/**/*Mapper.xml
   typeAliasesPackage: com.huatec.**.domain
+
+debug: true
+
+#设置重启的目录
+#spring.devtools.restart.additional-paths: src/main/java
+#classpath目录下的WEB-INF文件夹内容修改不重启
+#spring.devtools.restart.exclude: WEB-INF/**

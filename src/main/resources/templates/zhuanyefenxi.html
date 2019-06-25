@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>教育大数据后台管理平台</title>
+    <link rel="stylesheet" href="css/plugIn/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/plugIn/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/plugIn/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/plugIn/bootstrap-table.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/zhuanyefenxi.js"></script>
+</head>
+<body>
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/index/index">
+                    <img src="image/logo.png" alt="logo">
+                </a>
+                <ul class="nav pull-right top-l">
+                    <li class="user user_t" style="padding-right: 30px;">
+                        <span class="public_number">
+                        </span>
+                    </li>
+                    <li class="user user_t admin_login_f_title">
+                        <span class="username">
+                            <div class="admin_login admin_login_f_title">
+                                <span class="login_user">项目经理</span>
+                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                        class="back_index "></a>
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navList noneSelect">
+        <ul class="nav-item-menu">
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-user"></i><span>专业运营</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a onclick="zhuanyeyunying()"><span>专业运营</span></a></li>
+                </ul>
+            </li>
+            
+            <li class="nav-item">
+                <a href="javascript:;"><i class="glyphicon glyphicon-question-sign"></i><span>专业分析</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="QAinquire.html"><span>通信方向</span></a></li>
+                </ul>
+                <ul>
+                    <li><a href="QAinquire.html"><span>物联网方向</span></a></li>
+                </ul>
+                <ul>
+                    <li><a href="QAinquire.html"><span>云计算方向</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item nav-show">
+                <a href="javascript:;"><i class="glyphicon glyphicon-knight"></i><span>智慧学习</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li class="teacher-box"><a href="CreateTeam.html"><span>智慧学习【老师】</span></a></li>
+                    <li class="teacher-box active"><a href="myPlan.html"><span>智慧学习【学生】</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item teacher-box ">
+                <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>就业分析</span><i class="glyphicon glyphicon-menu"></i></a>
+                <ul>
+                    <li><a href="InquireActiveness.html"><span>全部专业方向</span></a></li>
+                    <li><a href="CompareActiveness.html"><span>通信</span></a></li>
+                    <li><a href="CompareActiveness.html"><span>物联网</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="admin-con">
+            <h5 class="main-h5">专业分析--<span th:text="${majorName}" id="majorName"></span></h5>
+            <form class="form-horizontal form-admin" id="edit">
+
+                <h6 class="main-h6">基本信息</h6>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">合作院校</label>
+                    <label class="col-sm-1 control-label">本科：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].undergraduate}
+                               id="undergraduate" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">高职：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].vocational}
+                               id="vocational" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">满意度：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorSatisfaction}
+                               id="majorSatisfaction" onkeyup="this.value=this.value.replace(/^(\d|[0-9]\d+)(\\.(\\d){0,2})/g,'')"
+                               onafterpaste="this.value=this.value.replace(/^(\d|[0-9]\d+)(\\.(\\d){0,2})/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">开设时间：</label>
+                    <div class="col-sm-2">
+                        <input type="date" class="form-control" th:value=${majorBasic[0].setupTime}
+                               id="setupTime">
+                    </div>
+                    <label class="col-sm-1 control-label">教材：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorBook}
+                               id="majorBook" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">课程数：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorCourse}
+                               id="majorCourse" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <label class="col-sm-1 control-label">学生人数：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorStudent}
+                               id="majorStudent" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">师资团队：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorTeacher}
+                               id="majorTeacher" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                    <label class="col-sm-1 control-label">课时数：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" th:value=${majorBasic[0].majorCourseHour}
+                               id="majorCourseHour" onkeyup="this.value=this.value.replace(/\D|^0/g,'')"
+                               onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+                    </div>
+                </div>
+
+            </form>
+            <h6 class="main-h6"></h6>
+            <div class="form-group">
+                <button onclick="update()" class="btn btn-primary btn-form">确认修改</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p>版权信息 教育大数据后台管理平台</p>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    function zhuanyeyunying() {
+//        location.href = "/web/weix_product?parent_id=" + id;
+        location.href = "/zhuanyeyunying";
+    }
+</script>
+
+
+</html>

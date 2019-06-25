@@ -43,13 +43,13 @@
             UPDATE `title_page_num`
             <set>
                 <if test="item.dataUndergraduate !=null " >
-                    `data_undergraduate` = #{item.dataUndergraduate}
+                    `data_undergraduate` = #{item.dataUndergraduate},
                 </if>
                 <if test="item.dataVocational !=null " >
-                    `data_vocational` = #{item.dataVocational}
+                    `data_vocational` = #{item.dataVocational},
                 </if>
                 <if test="item.pageTitleNum !=null " >
-                    `page_title_num` = #{item.pageTitleNum}
+                    `page_title_num` = #{item.pageTitleNum},
                 </if>
                 <if test="item.dataOther !=null " >
                     `data_other` = #{item.dataOther}

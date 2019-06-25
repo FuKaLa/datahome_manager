@@ -1,5 +1,5 @@
 package com.huatec.datahome.controller;
-
+import org.springframework.ui.Model;
 import com.huatec.datahome.domain.*;
 import com.huatec.datahome.service.MajorOprationService;
 import com.huatec.datahome.utils.R;
@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 专业运营
@@ -20,7 +18,7 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/majorOpration")
+//@RequestMapping("/majorOpration")
 public class MajorOprationController {
     private final MajorOprationService majorOprationService;
 
@@ -29,7 +27,7 @@ public class MajorOprationController {
         this.majorOprationService = majorOprationService;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/updateMajorOpration")
     @ResponseBody
     public R update(@RequestBody MajorOprationDO majorOprationDO) {
 
@@ -50,9 +48,8 @@ public class MajorOprationController {
         return R.ok();
     }
 
-    @RequestMapping("/getDetail")
-    @ResponseBody
-    public R getByMajor() {
+    @RequestMapping("/getDetailMajorOpration")
+    public String getByMajor(Model model) {
         /**
          * 专业运营基础
          */
@@ -66,12 +63,25 @@ public class MajorOprationController {
          * 工程师行业背景人数，
          */
         List<ProjectorBackground> backgroundNum = majorOprationService.getBackgroundNum();
-
-        MajorOprationDO aDo = new MajorOprationDO();
-        aDo.setBackgroundNum(backgroundNum);
-        aDo.setBaseInfo(baseInfo);
-        aDo.setMajorRate(majorRate);
-        return R.resultData(aDo);
+        model.addAttribute("baseInfo",baseInfo);
+        model.addAttribute("majorRate",majorRate);
+        model.addAttribute("backgroundNum",backgroundNum);
+        model.addAttribute("test","890");
+        return "zhuanyeyunying";
     }
+
+
+//    @RequestMapping("/index")
+//    public ModelAndView index() {
+//        ModelAndView modelAndView = new ModelAndView("index");
+//        Map map = new HashMap();
+//        map.put("name", "test001");
+//        map.put("sex", "男");
+//        map.put("age", "22");
+//        modelAndView.addObject("list1", map);
+//        modelAndView.addObject("list2", "这是第二个集合");
+//
+//        return modelAndView;
+//    }
 
 }
