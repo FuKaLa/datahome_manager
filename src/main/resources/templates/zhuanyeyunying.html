@@ -16,7 +16,7 @@
     <script type="text/javascript" src="js/plugIn/Validform_v5.3.2_min.js"></script>
     <script type="text/javascript" src="js/plugIn/bootstrap-table.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/myplan.js"></script>
+    <script src="js/zhuanyeyunying.js"></script>
 </head>
 <body>
     <div class="header navbar navbar-inverse navbar-fixed-top">
@@ -34,7 +34,7 @@
                         <span class="username">
                             <div class="admin_login admin_login_f_title">
                                 <span class="login_user">项目经理</span>
-                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                <a data-href="/login/loginout"><input id="ensure" type="button" value="退出"
                                         class="back_index "></a>
                             </div>
                         </span>
@@ -55,28 +55,28 @@
             <li class="nav-item">
                 <a href="javascript:;"><i class="glyphicon glyphicon-question-sign"></i><span>专业分析</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
-                    <li><a href="QAinquire.html"><span>通信方向</span></a></li>
+                    <li><a onclick="zhuanyefenxi('通信方向')"><span>通信方向</span></a></li>
                 </ul>
                 <ul>
-                    <li><a href="QAinquire.html"><span>物联网方向</span></a></li>
+                    <li><a onclick="zhuanyefenxi('物联网方向')"><span>物联网方向</span></a></li>
                 </ul>
                 <ul>
-                    <li><a href="QAinquire.html"><span>云计算方向</span></a></li>
+                    <li><a onclick="zhuanyefenxi('云计算方向')"><span>云计算方向</span></a></li>
                 </ul>
             </li>
             <li class="nav-item nav-show">
                 <a href="javascript:;"><i class="glyphicon glyphicon-knight"></i><span>智慧学习</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
-                    <li class="teacher-box"><a href="CreateTeam.html"><span>智慧学习【老师】</span></a></li>
-                    <li class="teacher-box active"><a href="myPlan.html"><span>智慧学习【学生】</span></a></li>
+                    <li class="teacher-box"><a onclick="zhihuitea()"><span>智慧学习【老师】</span></a></li>
+                    <li class="teacher-box active"><a onclick="zhihuistu()"><span>智慧学习【学生】</span></a></li>
                 </ul>
             </li>
             <li class="nav-item teacher-box ">
                 <a href="javascript:;"><i class="glyphicon glyphicon-hourglass"></i><span>就业分析</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
-                    <li><a href="InquireActiveness.html"><span>全部专业方向</span></a></li>
-                    <li><a href="CompareActiveness.html"><span>通信</span></a></li>
-                    <li><a href="CompareActiveness.html"><span>物联网</span></a></li>
+                    <li><a onclick="jiuyefenxi('全部专业方向')"><span>全部专业方向</span></a></li>
+                    <li><a onclick="jiuyefenxi('通信')"><span>通信</span></a></li>
+                    <li><a onclick="jiuyefenxi('物联网')"><span>物联网</span></a></li>
                 </ul>
             </li>
         </ul>
@@ -265,7 +265,24 @@
 //        location.href = "/web/weix_product?parent_id=" + id;
         location.href = "/getDetailMajorOpration";
     }
+    function zhihuitea() {
+        location.href = "/getDetailSmartLearningTea";
+    }
+    function zhihuistu() {
+        location.href = "/getDetailSmartLearningStu";
+    }
+    function zhuanyefenxi(majorName) {
+        location.href = "/getByMajorMajorAnalysis?majorName=" + majorName;
+    }
 
+    function jiuyefenxi(majorName) {
+        location.href = "/getByMajorEmployment?majorName=" + majorName;
+    }
+    $("#ensure").click(function () {
+        $.cookie("username", "", { expires: 7 });
+        $.cookie("password", "", { expires: 7 });
+        ssoLogOut();
+    });
 </script>
 
 

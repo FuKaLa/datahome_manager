@@ -32,7 +32,7 @@
                         <span class="username">
                             <div class="admin_login admin_login_f_title">
                                 <span class="login_user">项目经理</span>
-                                <a data-href="/login/loginout"><input id="return1Button" type="button" value="退出"
+                                <a data-href="/login/loginout"><input id="ensure" type="button" value="退出"
                                         class="back_index "></a>
                             </div>
                         </span>
@@ -49,7 +49,7 @@
                     <li><a onclick="zhuanyeyunying()"><span>专业运营</span></a></li>
                 </ul>
             </li>
-            
+
             <li class="nav-item">
                 <a href="javascript:;"><i class="glyphicon glyphicon-question-sign"></i><span>专业分析</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
@@ -233,16 +233,26 @@
 <script type="text/javascript">
     function zhuanyeyunying() {
 //        location.href = "/web/weix_product?parent_id=" + id;
-        location.href = "/zhuanyeyunying";
+        location.href = "/getDetailMajorOpration";
     }
     function zhihuitea() {
-        location.href = "/zhihuitea";
+        location.href = "/getDetailSmartLearningTea";
     }
     function zhihuistu() {
-        location.href = "/zhihuistu";
+        location.href = "/getDetailSmartLearningStu";
+    }
+    function zhuanyefenxi(majorName) {
+        location.href = "/getByMajorMajorAnalysis?majorName=" + majorName;
     }
 
-
+    function jiuyefenxi(majorName) {
+        location.href = "/getByMajorEmployment?majorName=" + majorName;
+    }
+    $("#ensure").click(function () {
+        $.cookie("username", "", { expires: 7 });
+        $.cookie("password", "", { expires: 7 });
+        ssoLogOut();
+    });
 </script>
 
 
