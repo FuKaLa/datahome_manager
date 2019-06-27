@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/plugIn/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/plugIn/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/plugIn/Validform_v5.3.2_min.js"></script>
     <script type="text/javascript" src="js/plugIn/bootstrap-table.min.js"></script>
@@ -45,7 +46,7 @@
     </div>
     <div class="navList noneSelect">
         <ul class="nav-item-menu">
-            <li class="nav-item">
+            <li class="nav-item nav-show">
                 <a href="javascript:;"><i class="glyphicon glyphicon-user"></i><span>专业运营</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
                     <li><a onclick="zhuanyeyunying()"><span>专业运营</span></a></li>
@@ -64,7 +65,7 @@
                     <li><a onclick="zhuanyefenxi('云计算方向')"><span>云计算方向</span></a></li>
                 </ul>
             </li>
-            <li class="nav-item nav-show">
+            <li class="nav-item">
                 <a href="javascript:;"><i class="glyphicon glyphicon-knight"></i><span>智慧学习</span><i class="glyphicon glyphicon-menu"></i></a>
                 <ul>
                     <li class="teacher-box"><a onclick="zhihuitea()"><span>智慧学习【老师】</span></a></li>
@@ -248,10 +249,10 @@
                     </div>
                 </div>
                 <h6 class="main-h6"></h6>
-                <div class="form-group">
-                    <button id="pwdBtn" onclick="update()" class="btn btn-primary btn-form">确认修改</button>
-                </div>
             </form>
+            <div class="form-group">
+                <button id="pwdBtn" onclick="update()" class="btn btn-primary btn-form">确认修改</button>
+            </div>
         </div>
         <div class="footer">
             <p>版权信息 教育大数据后台管理平台</p>

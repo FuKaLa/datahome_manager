@@ -2,7 +2,7 @@
 //修改提交
 function update() {
 
-    alert($("#xx").val())
+    // alert($("#xx").val())
     var baseInfo=[];
     var d1={"name":"学校","value":$("#xx").val()};
     var d2={"name":"视频数量/个","value":$("#spsl").val()};

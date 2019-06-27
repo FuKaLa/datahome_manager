@@ -68,13 +68,13 @@
             <set>
 
                 <if test="item.courseNum != null " >
-                    `courseNum` = #{item.courseNum}
+                    `course_num` = #{item.courseNum}
                 </if>
 
             </set>
 
             <where>
-                `course_category` = #{courseCategory}
+                `course_category` = #{item.courseCategory}
             </where>
 
         </foreach>

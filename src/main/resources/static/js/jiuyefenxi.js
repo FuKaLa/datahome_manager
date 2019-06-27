@@ -2,7 +2,7 @@
 //修改提交
 function update() {
 
-    alert($("#majorName").text());
+    // alert($("#majorName").text());
     var name = $(".majorName").text();
     console.log(name)
     var graduateAbilitie = [];

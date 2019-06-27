@@ -10,9 +10,9 @@ function update() {
 // 加一天
 //     date.setDate(date.getDate() + 1);
 
-    alert($("#undergraduate").val())
+    // alert($("#undergraduate").val())
     var majorBasic=[];
-    var d1={"majorName":$("#majorName").val(),
+    var d1={"majorName":$("#majorName").text(),
         "majorBook":$("#majorBook").val(),
         "majorTeacher":$("#majorTeacher").val(),
         "majorCourse":$("#majorCourse").val(),

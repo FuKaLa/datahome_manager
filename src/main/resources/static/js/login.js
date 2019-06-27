@@ -140,9 +140,8 @@ function checkUserLongin () {
             var nickName = jsonData.nick_name;
 
             var strRole = JSON.stringify(jsonData.rol_list);
-
             //if (nickName === "项目经理"){
-            if (strRole.indexOf('P011') > 0) {
+            if (strRole.indexOf('P011') > 0 || strRole.indexOf('P032') > 0) {
                 // window.location = "main?userId="+userId +"&depId="+depId+"&depName="+ encodeURI(depName)+
                 //     "&userName="+encodeURI(userName) +
                 //     "&headImg="+headImg+"&nickName="+encodeURI(nickName);

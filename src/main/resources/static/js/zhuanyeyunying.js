@@ -2,7 +2,7 @@
 //修改提交
 function update() {
 
-    alert($("#hbk").val())
+    // alert($("#hbk").val())
     var baseInfo=[];
     var d1={"name":"合作院校","dataUndergraduate":$("#hbk").val(),"dataVocational":$("#hgz").val()};
     var d2={"name":"运营团队","dataUndergraduate":$("#ybk").val(),"dataVocational":$("#ygz").val()};
